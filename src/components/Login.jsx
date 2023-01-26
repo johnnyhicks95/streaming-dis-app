@@ -8,7 +8,7 @@ const Login = (props) => {
                 <CTALogoOne src="/images/cta-logo-one.svg" alt="Logo-app"/>
                 <SignUp>Let's watch!</SignUp>
                 <Description>
-                    Get Premier Access to Avengers and the Last Dragon for an additional fee
+                    Get Premier Access  n to Avengers and the Last Dragon for an additional fee
                     with a Disney+ subscription. As of 03/26/21, the price of Disney+
                     and The Disney Bundle will increase by $1.
                 </Description>
