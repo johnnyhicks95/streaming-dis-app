@@ -3,17 +3,19 @@ import './App.css';
 import Login from "./components/Login";
 import Header from "./components/Header";
 
+
 function App() {
   return (
-    <div className="App">
-      <Header />
-      
-      <Router>
-        <Routes>
-          <Route path="/" element={<Login/>} />
-        </Routes>
-      </Router>
-    </div>
+
+      <div className="App">
+        <Header />
+        
+        <Router>
+          <Routes>
+            <Route path="/" element={<Login/>} />
+          </Routes>
+        </Router>
+      </div>
   );
 }
 

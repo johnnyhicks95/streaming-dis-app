@@ -1,11 +1,48 @@
 import styled from "styled-components"
+import {auth, provider} from "../firebase"
+import { useHistory } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+import { selectUserName, selectUserPhoto, setUserLoginDetails } from '../features/user/userSlice'
 
 const Header = (props) => {
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const userName = useSelector(selectUserName)
+    const userPhoto = useSelector(selectUserPhoto)
+    
+    const handleAuth = () => {
+        // When clicked on login, pops up the 'google sign in'
+        auth
+            .SignInWithPopup(provider)
+            .then((result) => {
+                // console.log(result)
+                setUserLoginDetails(result.user)
+            } )
+            .catch( (error) => {
+                alert(error.message)
+            } )
+    }
+
+    const setUSer = (user)  => {
+        dispatch( 
+            setUserLoginDetails({
+                name: user.displayName,
+                email: user.email,
+                photo: user.photoURL, 
+            }))
+
+    }
+
     return (
         <Nav>
             <Logo>
                 <img src="/images/logo.svg" alt="Disney+" />
             </Logo>
+            {
+                !userName ? 
+                    <Login onClick={handleAuth} ></login>
+                    : <></>
+            }
             <NavMenu>
                 <a href="/home">
                     <img src="/images/home-icon.svg" alt="HomeNav" />
@@ -32,7 +69,8 @@ const Header = (props) => {
                     <span>Series</span>
                 </a>
             </NavMenu>
-            <Login>Login</Login>
+
+            <Login onClick={handleAuth} >Login</Login>
         </Nav>
     ) 
 }
